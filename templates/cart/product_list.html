@@ -1,0 +1,73 @@
+{% include 'header.html'%}
+<style>
+    .button {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+       }
+    .button:hover {
+        background-color: #45a049;
+    }
+
+    .button1 {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #B22222;
+        color: white;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+       }
+    .button1:hover {
+        background-color: #8B0000;
+    }
+
+    .button2 {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #000000;
+        color: white;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+       }
+    .button2:hover {
+        background-color: #808080;
+    }
+
+</style>
+<body>
+<center>
+    <ol>
+        {% for i in clothes %}
+        <li>
+            <p>Бренд - {{ i.name }}</p>
+            <p>Описание - {{ i.descript }}</p>
+            <p>Цена - {{ i.price }}</p>
+
+            {% for j in i.tags.all %}
+                <p>Тип - {{ j.name }}</p>
+            {% endfor %}
+        </li>
+        <br>
+        {% endfor %}
+    </ol>
+    <a href="/old_cloth" class="button">Для пенсионеров</a>
+    <a href="/young_cloth" class="button2">Для молодежи</a>
+</center>
+</body>
+{% include 'footer.html' %}
+

@@ -1,0 +1,45 @@
+{% include 'header.html'%}
+<style>
+    .button {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #000000;
+        color: white;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+       }
+    .button:hover {
+        background-color: #808080;
+    }
+</style>
+<head>
+    <h1>Товары</h1>
+
+</head>
+<body>
+<center>
+<ul>
+
+    {% for post in posts %}
+    <li>
+      {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" width="300" height="300">
+      {% else %}
+      <p>Изображение отсутствует</p>
+      {% endif %}
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.created_at }}</p>
+      <button><a href="/items/{{ post.id }}">Подробнее</a></button>
+    </li>
+    {% endfor %}
+
+
+</ul>
+</center>
+
+</body>
+{% include 'footer.html' %}

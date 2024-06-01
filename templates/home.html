@@ -1,0 +1,30 @@
+{% include 'header.html'%}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>{{ motto.text }}</h1>
+
+    <h2>Watch our promo video:</h2>
+    <iframe width="560" height="315" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <h2>Top 5 popular gadgets this week:</h2>
+    <ul>
+        {% for gadget in popular_gadgets %}
+            <li>
+                <h3>{{ gadget.name }}</h3>
+                <p>{{ gadget.description }}</p>
+                <p>Price: ${{ gadget.price }}</p>
+                <p>Popularity: {{ gadget.popularity }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+
+
+
+{% include 'footer.html' %}

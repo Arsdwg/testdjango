@@ -1,0 +1,74 @@
+{% include 'header.html'%}
+
+<style>
+    .button {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #000000;
+        color: white;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+       }
+    .button:hover {
+        background-color: #808080;
+    }
+</style>
+
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+
+{% if post_id.image %}
+<img src="{{ post_id.image.url }}" alt="{{ post_id.title }}" width="300" height="300">
+{% else %}
+<p>Изображение отсутствует</p>
+{% endif %}
+
+
+<h1>{{ post_id.title }}</h1>
+<p> {{ post_id.descript }}</p>
+
+{% if post_id.music %}
+<audio controls>
+    <source src="{{ post_id.music.url }}" >
+</audio>
+{% else %}
+<p>Музыка отсутствует</p>
+{% endif %}
+
+
+{% if post_id.video %}
+<iframe src="{{ post_id.video }}" frameborder="0"></iframe>
+{% else %}
+<p>Видео отсутствует</p>
+{% endif %}
+
+
+<p>{{ post_id.category }}</p>
+<p>{{ post_id.author }}</p>
+<p>{{ post_id.rewiev }}</p>
+<p>{{ post_id.pages }}</p>
+<p>{{ post_id.time_book }}</p>
+<p>{{ post_id.created_at }}</p>
+
+<h2>Отзывы</h2>
+<table border="2">
+    <tr>
+        <td>Оценка</td> <td>Отзыв</td> <td>Дата отзыва</td>
+    </tr>
+    {% for i in post_id.review_item.all %}
+    <tr>
+        <td>{{ i.stars }}</td> <td>{{ i.text }}</td> <td>{{ i.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/create_review/" class="button">Добавить отзыв</a>
+</body>
+{% include 'footer.html' %}
